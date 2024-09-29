@@ -9,4 +9,22 @@ var ageCalculatorApp = {
     daysEl: document.getElementById('days'),
     calculateBtnEl: document.getElementById('calculateBtn'),
     calenderBtnEl: document.getElementById('calenderBtn'),
+
+    // Method to initialize event listeners
+    init() {
+        this.addEventListeners();
+    },
+
+    addEventListener(){
+        this.calculateBtnEl.addEventListener('click',() =>{
+            this.showCalendar();
+        });
+        this.dataPickerEl.addEventListener('click',(e) =>{
+            this.handleDataSelection(e);
+        });
+        
+        this.calculateBtnEl.addEventListener('click', () => {
+            this.calculatAge();
+        })
+    },   
 }
