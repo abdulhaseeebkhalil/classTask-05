@@ -80,4 +80,8 @@ var ageCalculatorApp = {
         this.monthsEl.innerText = months;
         this.daysEl.innerText = days;
     }
-}
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    ageCalculatorApp.init();
+});
