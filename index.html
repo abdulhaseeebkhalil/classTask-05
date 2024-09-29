@@ -10,26 +10,29 @@
     <div class="container">
       <!-- Input Section -->
       <div class="input-section">
-        <input type="text" placeholder="07-07-1996" id="date-input" />
+        <input type="text" placeholder="07-07-1996" id="date-input" readonly />
+        <input type="date" id="date-picker" style="display: none" />
         <button id="calendar-btn">📅</button>
-        <button id="calculate-btn">Age Calculate</button>
+        <button id="calculate-btn">Calculate</button>
       </div>
 
       <!-- Result Section -->
       <div class="result-section">
         <div class="result-box">
-          <h1 id="years">24</h1>
+          <h1 id="years">0</h1>
           <p>Years</p>
         </div>
         <div class="result-box">
-          <h1 id="months">8</h1>
+          <h1 id="months">0</h1>
           <p>Months</p>
         </div>
         <div class="result-box">
-          <h1 id="days">12</h1>
+          <h1 id="days">0</h1>
           <p>Days</p>
         </div>
       </div>
     </div>
+
+    <script src="./main-script.js"></script>
   </body>
 </html>
