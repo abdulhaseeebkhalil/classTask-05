@@ -3,9 +3,33 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Age Calculatur</title>
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Age Calculatur</h1>
+    <div class="container">
+      <!-- Input Section -->
+      <div class="input-section">
+        <input type="text" placeholder="07-07-1996" id="date-input" />
+        <button id="calendar-btn">📅</button>
+        <button id="calculate-btn">Age Calculate</button>
+      </div>
+
+      <!-- Result Section -->
+      <div class="result-section">
+        <div class="result-box">
+          <h1 id="years">24</h1>
+          <p>Years</p>
+        </div>
+        <div class="result-box">
+          <h1 id="months">8</h1>
+          <p>Months</p>
+        </div>
+        <div class="result-box">
+          <h1 id="days">12</h1>
+          <p>Days</p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
