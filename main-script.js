@@ -1,59 +1,59 @@
 var ageCalculatorApp = {
+    // State to store user-selected date and today's date
     birthDate: null,
     todayDate: new Date(),
 
-    dataInputEl: document.getElementById('dataInput'),
-    dataPickerEl: document.getElementById('dataPicker'),
+    // DOM Elements
+    dateInputEl: document.getElementById('date-input'),
+    datePickerEl: document.getElementById('date-picker'),
     yearsEl: document.getElementById('years'),
     monthsEl: document.getElementById('months'),
     daysEl: document.getElementById('days'),
-    calculateBtnEl: document.getElementById('calculateBtn'),
-    calenderBtnEl: document.getElementById('calenderBtn'),
+    calculateBtnEl: document.getElementById('calculate-btn'),
+    calendarBtnEl: document.getElementById('calendar-btn'),
 
     // Method to initialize event listeners
     init() {
         this.addEventListeners();
     },
 
-    addEventListener(){
-        this.calculateBtnEl.addEventListener('click',() =>{
+    // Add event listeners for buttons
+    addEventListeners() {
+        // Show date picker when calendar icon is clicked
+        this.calendarBtnEl.addEventListener('click', () => {
             this.showCalendar();
         });
-        this.dataPickerEl.addEventListener('click',(e) =>{
-            this.handleDataSelection(e);
+
+        // Update input field when a date is selected
+        this.datePickerEl.addEventListener('change', (e) => {
+            this.handleDateSelection(e);
         });
-        
+
+        // Calculate age when the calculate button is clicked
         this.calculateBtnEl.addEventListener('click', () => {
-            this.calculatAge();
-        })
-    },   
-
-
-
-
-
-
-
-
-
-    showCalendar(){
-        this.dataPickerEl.style.display = 'block';
-        this.dataPickerEl.focus();
-        this.dataPickerEl.click();
+            this.calculateAge();
+        });
     },
 
-    handleDataSelection(event){
+    // Show the hidden date picker
+    showCalendar() {
+        this.datePickerEl.style.display = 'block'; // Ensure it's visible
+        this.datePickerEl.focus();  // Set focus to the date picker so it opens
+        this.datePickerEl.click();  // Trigger the date picker
+    },
+
+    // Handle date selection from the calendar
+    handleDateSelection(event) {
         var selectedDate = new Date(event.target.value);
-        if(!isNaN(selectedDate)){
+        if (!isNaN(selectedDate)) {
             this.birthDate = selectedDate;
-            this.dataInputEl.value = selectedDate.toLocaleDateString('en-GB');
+            this.dateInputEl.value = selectedDate.toLocaleDateString('en-GB'); // Format as DD-MM-YYYY
         }
     },
 
-
-
-    calculatAge(){
-        if (!this.birthDate){
+    // Calculate age based on birth date and today's date
+    calculateAge() {
+        if (!this.birthDate) {
             alert("Please select a valid birth date.");
             return;
         }
@@ -63,25 +63,29 @@ var ageCalculatorApp = {
         var ageMonths = today.getMonth() - this.birthDate.getMonth();
         var ageDays = today.getDate() - this.birthDate.getDate();
 
-        
-        if(ageDays < 0){
+        // Adjust for negative values
+        if (ageDays < 0) {
             ageMonths--;
             ageDays += new Date(today.getFullYear(), today.getMonth(), 0).getDate();
         }
-        if(ageMonths < 0){
+        if (ageMonths < 0) {
             ageYears--;
             ageMonths += 12;
         }
-        this.updateDom(ageYears, ageMonths, ageDays);
+
+        // Update the DOM with the calculated age
+        this.updateDOM(ageYears, ageMonths, ageDays);
     },
 
-    updateDom(years,months,days){
+    // Update the result boxes in the DOM with the calculated age
+    updateDOM(years, months, days) {
         this.yearsEl.innerText = years;
         this.monthsEl.innerText = months;
         this.daysEl.innerText = days;
     }
 };
 
+// Initialize the app when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
     ageCalculatorApp.init();
 });
