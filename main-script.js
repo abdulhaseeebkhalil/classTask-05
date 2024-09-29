@@ -74,4 +74,10 @@ var ageCalculatorApp = {
         }
         this.updateDom(ageYears, ageMonths, ageDays);
     },
+
+    updateDom(years,months,days){
+        this.yearsEl.innerText = years;
+        this.monthsEl.innerText = months;
+        this.daysEl.innerText = days;
+    }
 }
